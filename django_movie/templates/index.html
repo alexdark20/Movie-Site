@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="test,site,website" />
+    <meta name="description" content="Цей сайт є пробним сайтом"/>
+    <link rel="icon" href="{% static 'images/apple.ico' %}" type="images/x-icon"/>
+    <link rel="stylesheet" href="{% static 'css/style_3.css' %}"  type="text/css"/>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}"  type="text/css"/>
+    {% endblock %}
+    <title>{% block title %}
+                {{title}}
+            {% endblock %}
+    </title>
+</head>
+<body>
+    <header>
+        <ul class="menu">
+            <li><a href="{% url 'main' %}">Головна</a> </li>
+            <li><a href="/">Фільми</a>
+                <ul class="submenu">
+                    {% for genre in genres %}
+                    <li><a href="{{genre.get_absolute_url}}">{{ genre.name }}</a></li>
+                    {% endfor %}
+
+                </ul>
+            </li>
+            <li><a href="">Мультфільми</a>
+                <ul class="submenu">
+                    <li><a href="">Українські</a></li>
+                    <li><a href="/">Пригоди</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="search">
+            <form action="{% url 'main' %}" method="get">
+                <input type="text" title="Поиск" class="field" placeholder="Поиск" name="search"/>
+                <button type="submit" class="button-search">Пошук</button>
+            </form>
+        </div>
+        <div class="registr-exit">
+            {% if request.user.is_authenticated %}
+            <li class="last">{{user.username}} |</li>
+            <a href="{% url 'logout' %}">Вийти</a>
+            {% else %}
+            <div><a href="{% url 'register' %}" title="Зарегистрироваться" >Реєстрація</a></div>
+            <div><a href="{% url 'login' %}" title="Вход" >Увійти</a></div>
+            {% endif %}
+        </div>
+
+
+    </header>
+    <div class="block-content">
+        {% block content %}
+           {% include 'movies/includes/left-block.html' %}
+
+            <div class="right-block">
+                {% for movie in movies %}
+                <div class="post">
+                    <div class="post-img">
+                        <img src="{{ movie.poster.url }}" id="img_poster" />
+                    </div>
+                    <div class="post-meta">
+                        <h3 ><a  href="{% url 'film_detail_url' id=movie.id %}" class="title-movie" >{{ movie.title }}</a></h3>
+                    </div>
+                    <div class="slogan">
+                        <h3>{{ movie.tagline }}</h3>
+                    </div>
+                </div>
+
+                {% endfor %}
+                <div class="list-page">
+                    {% if page_obj.has_other_pages %}
+                    <ul class="ul-page">
+                        {% for p in paginator.page_range %}
+                        {% if page_obj.number == p %}
+                            <li class="chose-page"><h3 id="chose-page-id">{{p}}</h3></li>
+                        {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                            <li class="page-num">
+                                <a href="?page={{p}}" class="a-in-page">{{p}}</a>
+                            </li>
+                        {% endif %}
+                        {% endfor %}
+
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+
+
+        {% endblock %}
+    </div>
+    <footer>
+        <span class="group">Долучайтесь:
+            <a href="/"><img class="group-inside" src="{% static 'images/inst.ico' %}"  width='25px' alt="Інстаграм" title="Інстаграм"/></a>
+            <a href="/"><img  class='group-inside' src="{% static 'images/youtube.ico' %}"  width='25px' alt="Ютуб" title="Ютуб"/></a>
+        </span>
+        <span id="down">Всі права захищені &copy;2020</span>
+    </footer>
+</body>
+</html>

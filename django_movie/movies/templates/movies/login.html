@@ -1,0 +1,30 @@
+{% extends 'movies/base_movies.html' %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}"  type="text/css"/>
+<link rel="stylesheet" href="{% static 'css/register.css' %}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+    {% include  'movies/includes/left-block.html' %}
+
+    <div class="right-block">
+        <form  method="post">
+            {% csrf_token %}
+            <div class="register">
+                <h1 >{{title}}</h1>
+                {% for f in form %}
+                <label for="{{ f.id_for_label }} " class="label-register">{{ f.label }}: </label>
+                {{ f }}
+                <div class="mistakes">{{ f.errors }}</div>
+                {% endfor %}
+            <button type="submit" class="bottom-register">Авторизація</button>
+            </div>
+
+        </form>
+
+    </div>
+
+
+{% endblock %}

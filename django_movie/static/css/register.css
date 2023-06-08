@@ -1,0 +1,34 @@
+.form-input{
+    width:380px;
+    height:27px;
+    border:1px solid silver;
+
+    margin-top:10px;
+}
+
+.bottom-register{
+    border-radius:10px;
+    width:130px;
+    height:30px;
+    background-color:blue;
+    color:white;
+    margin-top:30px;
+}
+
+.register{
+    height:380px;
+    width:410px;
+    margin:170px 0px 0px 280px;
+    display:flex;
+    flex-direction:column;
+}
+
+.label-register{
+    margin-top:20px;
+}
+
+.mistakes li{
+    background-color:white;
+    color :red;
+    border:none;
+}

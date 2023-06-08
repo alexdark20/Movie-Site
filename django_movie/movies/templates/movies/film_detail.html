@@ -1,0 +1,242 @@
+{% extends 'movies/base_movies.html' %}
+
+{% block css %}
+{% load static %}
+    <link href="{% static 'css/film_detail.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block title %}
+    {{ film.title }}
+{% endblock %}
+
+{% block content %}
+
+        <div class="join">
+            <div class="left-block">
+                <div class="poster">
+                    <img src="{{ film.poster.url }}" alt="Картинка із постером" title="Постер" />
+                </div>
+                <div class="trailer">
+                    <video controls="controls" loop="loop">
+                        <source src="{{ film.treiler.url }}"/>
+                    </video>
+
+                </div>
+            </div>
+            <div class="right-block">
+                <div class="right-block-inside_left">
+                    <div class="up">
+                        <h1 class="space">{{ film.title }}</h1>
+                        <h3 class="space">{{ film.english_title }}</h3>
+                        <h3 class="space" id="description_film">{{ film.description }}</h3>
+                        <h4 class="space">Якість відео  <span id="quality_video">{{ film.quality_videos }}</span></h4>
+                    </div>
+
+                    <div class="down">
+                        <h2 id="about_movie">Про фільм  {{ film.title }}</h2>
+                        <div class="container-str">
+                            <div class="block-1">Рік виробництва</div>
+                            <div class="block-2">{{ film.year }}</div>
+                        </div>
+                        <hr/>
+
+                        <div class="container-str">
+                            <div class="block-1">Країна</div>
+                            <div class="block-2">{{ film.country }}</div>
+                        </div>
+                        <hr/>
+
+
+                        <div class="container-str">
+                            <div class="block-1">Жанр</div>
+                            <div class="block-2">
+                                {% for genre in film.genres.all %}
+                                    <span><a href="/">{{ genre.name }}</a></span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <hr/>
+
+
+                        <div class="container-str">
+                            <div class="block-1">Слоган</div>
+                            <div class="block-2">{{ film.tagline }}</div>
+                        </div>
+                        <hr/>
+                        <div class="container-str">
+                            <div class="block-1">Режисер </div>
+                            <div class="block-2">
+                                {% for director in film.directors.all %}
+                                    <span><a href="{{ director.get_absolute_url }}">{{ director.name }}</a></span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="container-str">
+                            <div class="block-1">Сценарій</div>
+                            <div class="block-2">
+                                {% for scenarist in film.scenarists.all %}
+                                    <span><a href="{{ scenarist.get_absolute_url }}">{{ scenarist.name }}</a></span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <hr/>
+
+                        <div class="container-str">
+                            <div class="block-1">Оператор</div>
+                            <div class="block-2">
+                                {% for operator in film.operators.all %}
+                                    <span><a href="{{ operator.get_absolute_url }}">{{ operator.name }}</a></span>
+                                {% endfor %}
+                             </div>
+                        </div>
+                        <hr/>
+                        <div class="container-str">
+                            <div class="block-1">Художник</div>
+                            <div class="block-2">
+                                {% for hudognik in film.hudogniks.all %}
+                                    <span><a href="{{ hudognik.get_absolute_url }}">{{ hudognik.name }}</a></span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <hr/>
+
+                        <div class="container-str">
+                            <div class="block-1"> Композитор</div>
+                            <div class="block-2">
+                                {% for compositor in film.compositors.all %}
+                                    <span><a href="{{ compositor.get_absolute_url }}">{{ compositor.name }}</a></span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <hr/>
+
+                         <div class="container-str">
+                             <div class="block-1">Продюсер</div>
+                             <div class="block-2">
+                                {% for producer in film.producer.all %}
+                                    <span><a href="{{ producer.get_absolute_url }}">{{ producer.name }}</a></span>
+                                 {% endfor %}
+                             </div>
+                         </div>
+                         <hr/>
+
+                        <div class="container-str">
+                            <div class="block-1">Бюджет</div>
+                            <div class="block-2">{{ film.budget }}</div>
+                        </div>
+                        <hr/>
+
+                        <div class="container-str">
+                            <div class="block-1">Збори у США</div>
+                            <div class="block-2">{{ film.fees_in_usa }}</div>
+                        </div>
+                        <hr/>
+
+                        <div class="container-str">
+                            <div class="block-1">Збори у світі</div>
+                            <div class="block-2">{{ film.fees_in_world }}</div>
+                        </div>
+                        <hr/>
+
+                        <div class="container-str">
+                            <div class="block-1">Прем'єра у світі</div>
+                            <div class="block-2">{{ film.world_premiere }}</div>
+                        </div>
+                        <hr/>
+
+                        <div class="container-str">
+                            <div class="block-1">Прем'єра в Україні</div>
+                            <div class="block-2">{{ film.ukrainian_premiere }}</div>
+                        </div>
+                        <hr/>
+
+                        <div class="container-str">
+                            <div class="block-1">Вік </div>
+                            <div class="block-2"><span id="age">{{ film.age }}+</span></div>
+                        </div>
+
+                        <div class="shorts_movie">
+                            <h2 class="shorts_movie-title">Кадри з фільму</h2>
+                            {% for kadr in film.movieshots.all %}
+                                <img src="{{ kadr.image.url }}" width="330px" height="210px" alt="{{ kadr.description }}"/>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="right-block-inside_right">
+                    <div class="block-reiting-right">
+
+
+                    </div>
+                    <div class="block-main-actors">
+                        <h3 >У головних ролях</h3>
+                        {% for actor in film.actors.all|slice:":10"  %}
+                            <p><a href="{{ actor.get_absolute_url }}">{{ actor.name }}</a></p>
+                        {% endfor %}
+
+                        {% if film.actors.all.count <= 4 %}
+                            <p><a href="/" class="all_actors">{{ film.actors.all.count }} Актори</a></p>
+                        {% else %}
+                            <p><a href="/" class="all_actors">{{ film.actors.all.count }} Акторів</a></p>
+                        {% endif %}
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="join_2-left-block">
+            <div class="description-block">
+                <p>{{ film.description_2 }}</p>
+            </div>
+
+            <div class="raiting-block">
+                <form action="{% url 'film_raiting' %}" method="post">
+                    {% csrf_token %}
+                    <h3>Рейтинг фільму</h3>
+                    <input type="hidden" name="movie" value="{{film.id}}">
+                    {% for k,v in star_form.fields.star.choices %}
+                    <input type="radio" name="star" value="{{ k }}" id="rating{{v}}">
+                    <label for="rating{{v}}" class="rating-label"></label>
+                    {% endfor %}
+                </form>
+
+            </div>
+            <hr/>
+            <div class="review">
+                <form action="{{ film.get_absolute_url }}" method="post">
+                    {% csrf_token %}
+                    {% for f in form %}
+                        <label for="{{f.id_for_label}}">{{f.label}}</label>
+                        {{ f }}
+                        <div class="errors">{{ f.errors }}</div>
+                    {% endfor %}
+                    <button type="submit" class="button_style">Відправити</button>
+                </form>
+
+            </div>
+            {% for review in film.review_movie.all %}
+                <div class="review-show">
+                    <div class="review-name"><h4>{{ review.name }}</h4></div>
+                    <label for="button{{review}}" class="label-in-review">Показати всю рецензію</label>
+                    <input type="checkbox" id="button{{review}}">
+                    <div class="block-review-p">
+                        <p>{{ review.text}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="join_2-right-block">
+
+        </div>
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<div class="block-left">
+    <form action="{% url  'main' %}" method="get">
+        <h3 class="otstup">Жанри</h3>
+        <ul>
+            {% for genre in genres %}
+            <li class="genre_str">
+                <input type="checkbox" name="genre_name" value="{{ genre.id }}"/>
+                <span>{{ genre.name }}</span>
+            </li>
+            {% endfor %}
+
+        </ul>
+        <h3 class="otstup">Рік</h3>
+        <ul>
+            {% for film in films %}
+            <li class="genre_str">
+                <input type="checkbox" name="year" value="{{ film.year }}"/>
+                <span>{{ film.year }}</span>
+            </li>
+            {% endfor %}
+
+        </ul>
+
+
+        <button type="submit" class="button-style-filter">Пошук</button>
+    </form>
+</div>

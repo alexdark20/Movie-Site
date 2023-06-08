@@ -1,0 +1,140 @@
+.block-left{
+    width:320px;
+    min-height:600px;
+
+    border:1px solid silver;
+    float:left;
+}
+
+.block-left ul{
+    display:flex;
+    flex-direction:column;
+    margin-left:20px;
+}
+
+.genre_str{
+    background-color:white;
+    border:1px solid white;
+    font-size:1.2em;
+    margin-top:10px;
+    position:relative;
+    /*z-index:;*/
+}
+
+.right-block{
+    float:right;
+    width:980px;
+    min-height:100vh;
+    /*border:3px solid yellow;*/
+}
+
+.title-movie{
+    color:black;
+}
+
+.post{
+    /*border:3px solid blue;*/
+    width:300px;
+    min-height:450px;
+    margin-bottom:10px;
+    margin:10px;
+    overflow:hidden;
+    float:left;
+}
+
+.post-img{
+    width:100%;
+    height:350px;
+}
+
+.post-meta{
+    width:100%;
+    height:40px;
+    /*border:3px solid red;*/
+}
+
+#img_poster{
+    width:100%;
+    height:100%;
+}
+
+.slogan{
+    width:100%;
+    min-height:80px;
+    /*border:2px solid green;*/
+    text-align:center;
+}
+
+.otstup{
+    margin-top:15px;
+    margin-left:20px;
+}
+
+.button-style-filter{
+    height:35px;
+    width:70px;
+    border:1px outset silver;
+    border-radius:4px;
+    color:green;
+    font-size:1.0em;
+    margin-left:20px;
+    margin-top:10px;
+}
+
+.inside-right-block{
+    border:2px solid red;
+    width:100%;
+    height:100%;
+}
+
+.list-page{
+    width:100%;
+    height:60px;
+    /*border:2px solid red;*/
+    float:left;
+    position:relative;
+    bottom:0px;
+}
+
+.ul-page{
+    all:initial;
+    display:flex;
+    position:absolute;
+    margin-left:420px;
+}
+
+.page-num{
+    all:initial;
+    color:black;
+    border:2px solid silver;
+    border-radius:80px;
+    height:55px;
+    width:55px;
+}
+
+.a-in-page{
+    color:black;
+    margin-left:5px;
+}
+
+.chose-page{
+    all:initial;
+    color:black;
+
+    height:55px;
+    width:55px;
+    font-size:1.2em;
+}
+
+#chose-page-id{
+    margin-top:20px;
+    margin-left:20px;
+}
+
+.last{
+    all:initial;
+    color:White;
+    font-size:1.2em;
+    margin-top:18px;
+    margin-left:50px;
+}

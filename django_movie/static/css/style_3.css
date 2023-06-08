@@ -1,0 +1,158 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+html{
+    height:100%;
+    width:100%;
+    background-color:Honeydew;
+}
+
+body{
+    color:black;
+    font-size:1em;
+    font-family:'Segoe UI',sens-serif;
+    line-height:135%;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+    height:auto;
+    width:90%;
+    background-color:white;
+    /*border:2px solid blue;*/
+    margin-left:6%;
+    margin-right:6%;
+}
+
+header{
+    width:100%;
+    border-bottom:2px solid silver;
+    background-color:#5f5fb2;
+    min-height:50px;
+    border:2px solid silver;
+    height:65px;
+    display:flex;
+}
+
+footer{
+    width:100%;
+    border:2px solid silver;
+    background-color:#5f5fb2;
+    min-height:50px;
+    margin-top:auto;
+    font-family:Comic Sans MS,sans-serif;
+    font-size:0.9em;
+    color:RosyBrown;
+    height:20px;
+    display:flex;
+}
+
+.menu{
+    display:flex;
+    padding-left:0px;
+    list-style:none;
+    font-size:1.2em;
+    font-family:Comic Sans MS,sans-serif;
+    color:black;
+}
+
+.submenu{
+    display:none;
+    font-size:1.0em;
+    font-family:Comic Sans MS,sans-serif;
+    color:black;
+    flex-direction:column;
+    position:absolute;
+    border:1px solid blue;
+    z-index:1;
+}
+
+ul{
+    display:flex;
+    padding-left:0;
+    list-style:none;
+}
+
+li{
+    position:relative;
+    border:2px solid DarkBlue;
+    background-color:DarkBlue;
+}
+
+li:hover ul.submenu{
+    display:flex;
+}
+
+a{
+    display:block;
+    color:Lavender;
+    text-decoration:none;
+    padding:1em;
+    white-space:nowrap;
+    font-family:Comic Sans MS,sans-serif;
+    font-size:1.1em;
+}
+
+a:hover{
+    transition:all.6s ease;
+    color:coral;
+    text-decoration:underline;
+}
+
+::selection{
+    background-color:red;
+    color:white;
+}
+
+.group-inside{
+    position:relative;
+    bottom:15px;
+}
+
+.group{
+    display:flex;
+    margin-left:350px;
+    margin-top:10px;
+    color:white;
+}
+
+#down{
+    margin-left:150px;
+    margin-top:10px;
+}
+
+input[type=text].field{
+    border:1px solid silver;
+    width:220px;
+    height:35px;
+    border-radius:4px;
+}
+
+.search{
+    margin-top:14px;
+    position:relative;
+    margin-left:320px;
+}
+
+.registr-exit{
+    display:flex;
+}
+
+.button-search{
+    height:35px;
+    width:70px;
+    border:1px outset silver;
+    border-radius:4px;
+    color: #2f3057;
+    font-size:1.0em;
+}
+
+.block-content{
+    min-height:100vh;
+    height:auto;
+}
+
+#djDebugPanelList{
+    all:initial;
+}

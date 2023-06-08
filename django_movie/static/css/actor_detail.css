@@ -1,0 +1,97 @@
+.container-block{
+    border:1px solid #5f5fb2;
+    display:flex;
+    width:100%;
+    height:1300px;
+}
+
+.block-left{
+    height:100%;
+    width:430px;
+    border:4px solid red;
+}
+
+.container-image{
+    border:1px outset silver;
+    width:350px;
+    height:400px;
+    position:relative;
+    margin:40px 5px 0px 35px;
+}
+.container-image img{
+    width:100%;
+    height:100%;
+}
+
+.block-right{
+    height:100%;
+    max-width:100%;
+    border:1px solid green;
+    display:flex;
+}
+
+.block-right-inside_1{
+    height:100%;
+    width:867px;
+    border:5px solid blue;
+}
+
+.block-right-inside_2{
+    width:100%;
+    height:100%;
+    border:3px solid yellow;
+}
+
+.up{
+    max-width:100%;
+    height:60px;
+    border:1px solid #5f5fb2;
+    padding:50px;
+    line-height:40px;
+}
+
+.attempt{
+    width:100%;
+    border:3px solid blue;
+    height:300px;
+}
+
+.about_person{
+    width:600px;
+    min-height:400px;
+    height:auto;
+    border:1px solid blue;
+    margin-left:52px;
+}
+
+.about_person_str{
+    max-width:100%;
+    border:1px solid red;
+    min-height:30px;
+    height:auto;
+    margin-top:13px;
+    display:flex;
+}
+
+.about_person_str_1{
+    width:300px;
+    border:1px solid blue;
+    min-height:100%;
+    height:auto;
+}
+
+.about_person_str_2{
+    width:100%;
+    border:3px solid red;
+    height:auto;
+    min-height:100%;
+}
+
+.wedding{
+    display:inline;
+    text-decoration:none;
+    margin:-50px;
+    line-height:3px;
+    font-family: 'Segoe UI',sens-serif;
+    color:black;
+}

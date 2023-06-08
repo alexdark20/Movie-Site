@@ -1,0 +1,125 @@
+{% extends 'movies/base_movies.html' %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/actor_detail.css' %}"  type="text/css"/>
+{% endblock %}
+
+{% block title %}
+    {{ actor.name }}
+{% endblock %}
+
+{% block content %}
+    <div class="container-block">
+        <div class="block-left">
+            <div class="container-image">
+                <img  src="{{ actor.image.url }}" alt="Зображення" title=""/>
+            </div>
+        </div>
+
+        <div class="block-right">
+            <div class="block-right-inside_1">
+                <div class="up">
+                        <h1>{{ actor.name }}</h1>
+                        <h3>{{ actor.english_name}}</h3>
+                </div>
+                <div class="about_person">
+                    <h3>О персоне</h3>
+                    <div class="about_person_str">
+                        <div class="about_person_str_1">Кар'єра</div>
+                        <div class="about_person_str_2"></div>
+                    </div>
+                    <div class="about_person_str">
+                        <div class="about_person_str_1">Зріст</div>
+                        <div class="about_person_str_2">{{ actor.height }}</div>
+                    </div>
+                    <div class="about_person_str">
+                        <div class="about_person_str_1">Дата народження</div>
+                        <div class="about_person_str_2">{{ actor.age}}</div>
+                    </div>
+                    <div class="about_person_str">
+                        <div class="about_person_str_1">Місто народження</div>
+                        <div class="about_person_str_2">{{ actor.native_country }}</div>
+                    </div>
+                    <div class="about_person_str">
+                        <div class="about_person_str_1">Жанри</div>
+                        <div class="about_person_str_2">
+                            {% for genre in actor.genres.all %}
+                                {{genre.name}}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% if actor.devorced.all %}
+                        <div class="about_person_str">
+                            {% if actor.gender.id == 1 %}
+                                {% if actor.married %}
+                                    <div class="about_person_str_1">Дружина</div>
+                                    <div class="about_person_str_2">
+                                        {% for partner in actor.devorced.all %}
+                                        <a href="{{ partner.get_absolute_url }}" class="wedding"><p>{{ partner }}(розлучення)</p></a>
+                                        {% endfor %}
+                                        <a href="{{ actor.married.get_absolute_url }}" class="wedding"><p>{{ actor.married }}</p></a>
+                                    </div>
+                                {% else %}
+                                    <div class="about_person_str_1">Дружина</div>
+                                    <div class="about_person_str_2">
+                                        {% for partner in actor.devorced.all %}
+                                        <a href="{{ partner.get_absolute_url }}" class="wedding"><p>{{ partner }}(розлучення)</p></a>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+
+                            {% elif actor.gender.id == 2 %}
+                                {% if actor.married %}
+                                    <div class="about_person_str_1">Чоловік</div>
+                                    <div class="about_person_str_2">
+                                        {% for partner in actor.devorced.all %}
+                                        <a href="{{ partner.get_absolute_url }}" class="wedding"><p>{{ partner }}(розлучення)</p></a>
+                                        {% endfor %}
+                                        <a href="{{ actor.married.get_absolute_url }}" class="wedding"><p>{{ actor.married }}</p></a>
+                                    </div>
+                                {% else %}
+                                    <div class="about_person_str_1">Чоловік</div>
+                                    <div class="about_person_str_2">
+                                        {% for partner in actor.devorced.all %}
+                                        <a href="{{ partner.get_absolute_url }}" class="wedding"><p>{{ partner }}(розлучення)</p></a>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% elif actor.married %}
+                        <div class="about_person_str">
+                            {% if actor.gender.id == 1 %}
+                                <div class="about_person_str_1">Дружина</div>
+                                <div class="about_person_str_2">
+                                    <a href="{{ actor.married.get_absolute_url }}" class="wedding"><p>{{ actor.married }}</p></a>
+                                </div>
+                            {% elif actor.gender.id == 2 %}
+                                <div class="about_person_str_1">Чоловік</div>
+                                <div class="about_person_str_2">
+                                    <a href="{{ actor.married.get_absolute_url }}" class="wedding"><p>{{ actor.married }}</p></a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+                    <div class="about_person_str">
+                        <div class="about_person_str_1">Всього фільмів</div>
+                        <div class="about_person_str_2">{{ actor.sum_movies }}</div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="block-right-inside_2">
+
+            </div>
+
+        </div>
+    </div>
+    <div class="attempt">шаблон</div>
+
+
+
+{% endblock %}
